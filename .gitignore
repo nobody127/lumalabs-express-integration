@@ -1,0 +1,27 @@
+# environment variables
+.env
+.env.*
+
+# node_modules
+node_modules
+
+# generated files
+package-lock.json
+
+# system and editor files/folders
+.idx
+.vscode
+.idea/
+*.sublime-workspace
+
+# Build directories
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python compiled files
+*.pyc
+__pycache__/

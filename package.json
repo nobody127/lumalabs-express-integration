@@ -1,0 +1,26 @@
+{
+  "name": "lumalabs-sdk-integration",
+  "description": "Lumalabs sdk integration in Node Express Server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "env-cmd -f config/.env nodemon src/server.js",
+    "local": "env-cmd -f config/.env.local nodemon src/server.js",
+    "test": "env-cmd -f config/.env.staging nodemon src/server.js",
+    "prod": "env-cmd -f config/.env.production nodemon src/server.js"
+  },
+  "author": "UDIT RAJ",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "env-cmd": "^10.1.0",
+    "express": "^4.21.1",
+    "mongodb": "^6.13.0",
+    "mongoose": "^8.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
