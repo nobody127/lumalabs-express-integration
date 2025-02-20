@@ -1,31 +1,34 @@
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const prettyPrintError = require('./utils/pretty_print_error');
+const connectDb = require('./utils/mongodb_connect');
+
+process.on('uncaughtException', (err) => {
+  prettyPrintError(err, 'uncaughtException', null);
+});
 
 dotenv.config();
 const app = require('./app');
 
-const {DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_CONNECTION_STRING} = process.env;
+const { PORT } = process.env;
+const port = PORT || 5002;
 
-const dbUrl = DATABASE_CONNECTION_STRING.replace(
-  '<db_username>',
-  DATABASE_USERNAME,
-).replace(
-  '<db_password>',
-  DATABASE_PASSWORD,
-);
+const startServer = async () => {
+  try {
+    await connectDb();
+    const server = app.listen(port, () => {
+      console.log(`Server listening on port ${port}`);
+    });
 
-mongoose
-  .connect(dbUrl)
-  .then((val) => {
-    console.log(`Connected to database`);
-  })
-  .catch((err) => {
-    console.log(`Something went wrong! Can't connect to database`);
-    console.log(`Error: ${err}`);
-  });
+    process.on('MongoServerError', (err) => {
+      prettyPrintError(err, 'MongoServerError', server);
+    });
 
-const port = process.env.PORT || 5002;
+    process.on('unhandledRejection', (err) => {
+      prettyPrintError(err, 'unhandledRejection', server);
+    });
+  } catch (err) {
+    prettyPrintError(err, 'uncaughtException', server);
+  }
+};
 
-const server = app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+startServer();
