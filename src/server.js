@@ -2,6 +2,10 @@ const dotenv = require('dotenv');
 const prettyPrintError = require('./utils/pretty_print_error');
 const connectDb = require('./utils/mongodb_connect');
 
+process.on('uncaughtException', (err) => {
+  prettyPrintError(err, 'uncaughtException', null);
+});
+
 dotenv.config();
 const app = require('./app');
 
