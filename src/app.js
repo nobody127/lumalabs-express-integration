@@ -2,7 +2,6 @@
 const express = require('express');
 const morgan = require('morgan');
 // internal imports here
-
 const globalErrorHandler = require('./utils/error_handler');
 const AppError = require('./utils/app_error');
 const requestTimeMiddleware = require('./middlewares/request_time.middleware');
