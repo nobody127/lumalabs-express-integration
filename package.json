@@ -5,23 +5,31 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "env-cmd -f config/.env nodemon src/server.js",
     "dev": "env-cmd -f config/.env nodemon src/server.js",
     "local": "env-cmd -f config/.env.local nodemon src/server.js",
-    "test": "env-cmd -f config/.env.staging nodemon src/server.js",
-    "prod": "env-cmd -f config/.env.production nodemon src/server.js"
+    "staging": "env-cmd -f config/.env.staging nodemon src/server.js",
+    "prod": "env-cmd -f config/.env.production nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "author": "UDIT RAJ",
   "license": "Apache-2.0",
   "dependencies": {
+    "@azure/identity": "^4.7.0",
+    "@lumaai/luma-web": "^0.2.2",
+    "@runware/sdk-js": "^1.1.37",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "env-cmd": "^10.1.0",
     "express": "^4.21.1",
+    "lumaai": "^1.4.1",
     "mongodb": "^6.13.0",
-    "mongoose": "^8.10.1"
+    "mongoose": "^8.10.1",
+    "morgan": "^1.10.0",
+    "openai": "^4.86.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -30,7 +38,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.35.0",
+    "jest": "^29.7.0",
     "ndb": "^0.2.4",
+    "nodemon": "^3.0.1",
     "prettier": "^3.3.3"
   }
 }

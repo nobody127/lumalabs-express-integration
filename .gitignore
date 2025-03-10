@@ -17,6 +17,7 @@ package-lock.json
 # Build directories
 dist/
 build/
+coverage/
 
 # OS generated files
 .DS_Store
