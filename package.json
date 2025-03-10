@@ -16,6 +16,9 @@
   "author": "UDIT RAJ",
   "license": "Apache-2.0",
   "dependencies": {
+    "@azure/identity": "^4.7.0",
+    "@lumaai/luma-web": "^0.2.2",
+    "@runware/sdk-js": "^1.1.37",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "env-cmd": "^10.1.0",
@@ -23,7 +26,8 @@
     "lumaai": "^1.4.1",
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "openai": "^4.86.2"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

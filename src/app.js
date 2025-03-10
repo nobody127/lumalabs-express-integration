@@ -6,6 +6,7 @@ const globalErrorHandler = require('./utils/error_handler');
 const AppError = require('./utils/app_error');
 const requestTimeMiddleware = require('./middlewares/request_time.middleware');
 const lumaaiRouter = require('./routers/lumaai.routes');
+const runwareRouter = require('./routers/runware.routes');
 
 // constants and variables definitions here
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(requestTimeMiddleware);
 
 app.use('/api/v1/lumaai', lumaaiRouter);
+app.use('/api/v1/runware', runwareRouter);
 app.use('/', (req, res, next) => {
   res.status(200).json({
     status: 'success',
