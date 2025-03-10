@@ -1,6 +1,7 @@
 // external or 3rd party imports here
 const express = require('express');
 const morgan = require('morgan');
+
 // internal imports here
 const globalErrorHandler = require('./utils/error_handler');
 const AppError = require('./utils/app_error');
