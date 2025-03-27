@@ -6,6 +6,7 @@ const {
 
 const router = express.Router();
 
+
 router.route('/image').post(generateImage);
 router.route('/video').post(generateVideo);
 
